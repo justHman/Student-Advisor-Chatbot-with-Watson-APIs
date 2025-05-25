@@ -1,0 +1,44 @@
+<html>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+   <script>
+      let prev_resp="";
+      let sendQuery = ()=>{
+         let formData = new FormData();
+         formData.append("file", document.getElementById("fileUpload").files[0]);
+         formData.append("previous_response",prev_resp);
+         let xhttp = new XMLHttpRequest();
+         xhttp.onreadystatechange = function() {
+
+         if (this.readyState == 4 && this.status == 200) {
+            filename = xhttp.responseText;
+            prev_resp = filename+"";
+            document.getElementById("response").innerHTML = "<audio controls><source src='./audio/"+filename+"' type='audio/mpeg'/>"
+        } else if (this.status == 500) {
+           setTimeout(()=>{
+            document.getElementById("response").innerHTML = "Error :"+ xhttp.responseText;
+           },2000)
+        }
+
+    };
+   xhttp.open("POST", "./uploader");
+
+   xhttp.send(formData);      
+   document.getElementById("response").innerHTML = "<img src='./static/watson_progress.gif' width='100px'/>"
+}
+   </script>
+   <body style="max-width: 500px;
+   margin: auto;">
+      <div class="form-floating"" style="width: 300px; height: 500px; margin-left: 50px;margin-top: 50px;">
+         <div class="card-body">
+            <div class="mb-3">
+               <label for="formFile" class="form-label">Upload the Audio file</label>
+               <input class="form-control" type="file" id="fileUpload">
+            </div>
+            <button onclick="sendQuery()" type="button" class="btn btn-secondary btn-lg">Get Answers</button>
+            <div id="response" style="margin-top: 50px ;width: 300px;">
+            </div>
+         </div>
+       </div>
+      </div>
+      </body>
+</html>

@@ -1,0 +1,15 @@
+PyJWT==1.7.1 
+flask-appbuilder==3.4.4 
+markupsafe==1.1.1 
+httpx==0.20 
+Flask 
+ibm-watson 
+python-dotenv 
+Flask-Cors
+
+flask==2.0.1
+flask-cors==3.0.10
+ibm-watson==6.0.0
+ibm-cloud-sdk-core==3.10.0
+python-dotenv==0.19.0
+ibm_db==3.1.0

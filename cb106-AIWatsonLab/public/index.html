@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Advisor Chatbot</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <h1>Student Advisor Chatbot</h1>
+
+    <!-- Speech to Text -->
+    <div>
+        <h3>Speech to Text</h3>
+        <input type="file" id="audioInput" accept="audio/wav">
+        <button onclick="uploadAudio()">Upload & Transcribe</button>
+        <p id="transcript"></p>
+    </div>
+
+    <!-- Assistant -->
+    <div>
+        <h3>Chat with Assistant</h3>
+        <input type="text" id="chatInput" placeholder="Nhập câu hỏi...">
+        <button onclick="sendMessage()">Gửi</button>
+        <p id="chatResponse"></p>
+    </div>
+
+    <!-- Text to Speech -->
+    <div>
+        <h3>Text to Speech</h3>
+        <input type="text" id="ttsInput" placeholder="Nhập văn bản...">
+        <button onclick="synthesizeSpeech()">Tạo Audio</button>
+        <audio id="audioOutput" controls></audio>
+    </div>
+    
+    <!-- Courses -->
+    <div>
+        <h3>Courses</h3>
+        <input type="text" id="courseInput" placeholder="Tìm khóa học...">
+        <button onclick="getCourses()">Tìm</button>
+        <ul id="courseList"></ul>
+    </div>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>
